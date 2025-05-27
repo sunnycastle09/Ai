@@ -3,10 +3,11 @@
 #include <sstream>
 #include <algorithm>
 
+void setAdata();
 void sentense();
 void Data();
 
-std::string Adata = "i ate z/i love z/i ate z/ilove a/i love a/i ate z/";
+std::string Adata;
 std::vector<std::string> data;
 std::vector<std::string> Avector;
 std::vector<std::string> Bvector;
@@ -19,20 +20,22 @@ std::string Aword;
 
 int main()
 {   
+    setAdata();
     sentense();
     Data();
     std::string source;
+    std::cout << "입력: ";
     std::cin >> source;
     Aword = source;
     int j = 0;
-    while (1) { ///////////////////       조건만 하면 완성??
+    while (1) { ///////////////////       조건만 하면 완성??   
         Sword.clear();
         s_count.clear();
         count.clear();
         if (j > 1)
             source = output;
         if (j == 0) {
-            std::cout <<"\n시작\n"<< Aword << " "; //source다음 어절이 output 전 output과 후 output이 같으면 됨
+            std::cout <<"\n출력: "<< Aword << " "; //source다음 어절이 output 전 output과 후 output이 같으면 됨
             j++;
             continue;
         }
@@ -50,6 +53,13 @@ int main()
             if (count[i] == *max) {
                 output = s_count[i];
             }
+        }
+        if (source == output) {
+            std::cout << "\n\n입력: ";
+                std::cin >> source;
+            j=0;
+            Aword = source;
+            continue;
         }
             std::cout << output << " ";
             j++;
@@ -92,4 +102,7 @@ void sentense() { // Populate the vector with sentences
            break;
        }
    }
+}
+void setAdata() {
+    Adata = "i ate pizza/i love dog/i love cat/i eat slad/she is running/running shoese/";
 }
